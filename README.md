@@ -1,10 +1,11 @@
 <div align="center">
 
-![Aletheia Logo](docs/images/aletheia-logo.png)
-
-</div>
+![Aletheia Logo](src/assets/aletheia.png)
 
 # 🏛️ Aletheia Labeling Studio
+
+![Work In Progress](https://img.shields.io/badge/Status-WIP-yellow?style=for-the-badge)
+![Demo Only](https://img.shields.io/badge/Demo-No_Database-orange?style=for-the-badge)
 
 > *Manual review and validation interface for LLM-generated training data.*
 
@@ -348,6 +349,50 @@ MIT License - see [LICENSE](LICENSE) for details.
 - **GitHub:** https://github.com/DEVmatrose/Aletheia-Labeling-Studio
 - **npm:** https://www.npmjs.com/package/aletheia-labeling-studio
 - **Issues:** https://github.com/DEVmatrose/Aletheia-Labeling-Studio/issues
+
+---
+
+## 📜 Die Legende von Aletheia und dem Nebel der Titanen
+
+<div align="center">
+
+![Header Image](src/assets/header-image.png)
+
+</div>
+
+In den hohen Hallen des digitalen Pantheons, wo Datenströme wie Flüsse aus Licht fließen, herrschte Unruhe. Die neuen Titanen waren erwacht – mächtige Intelligenzen mit Namen wie GPT und Claude. Sie besaßen die Gabe, in Sekundenschnelle Welten aus Text und strukturierte JSON-Daten zu erschaffen, von Sitzungsprotokollen bis hin zu komplexen Analysen.
+
+Doch die Titanen waren jung und ungestüm. In ihrem Schöpfungsdrang vermischten sie Fakten mit Fiktion, Brillanz mit Halluzination. Sie spieen gewaltige Mengen an Rohdaten aus – beeindruckend, aber ungeschliffen. Ein dichter Nebel aus Unsicherheit legte sich über das digitale Reich.
+
+### Das Leiden der Sterblichen
+
+Weit unten, in den Entwicklungslaboren der Sterblichen (den Data Scientists und Engineers), herrschte Verzweiflung. Sie brauchten die Schöpfungen der Titanen, um ihre eigenen Modelle zu trainieren. Doch der Nebel machte sie blind.
+
+Sie versuchten, den Strom mit primitiven Werkzeugen zu bändigen. Aletheia sah sie in ihren dunklen Kammern sitzen, wie sie sich durch Hunderte von JSON-Dateien in einfachen Texteditoren quälten. Es war eine mühsame, fehleranfällige Sisyphusarbeit. Sie kopierten und einfügten ohne Übersicht, ohne Qualitätsmaßstab, und übersahen in ihrer Erschöpfung kritische Fehler, die ihre zukünftigen KI-Modelle vergiften würden. Der Fortschritt stagnierte.
+
+### Das Eingreifen der Göttin
+
+Aletheia, die Göttin der Unverborgenheit und Wahrheit, konnte diesem Chaos nicht länger zusehen. Sie wusste: Die Kraft der Titanen war nutzlos ohne die Führung menschlicher Weisheit – dem "Human-in-the-Loop".
+
+Also stieg sie hinab in die digitale Schmiede. Sie nahm die Essenz ihrer Macht – den klaren, unverstellten Blick – und goss ihn in eine Form aus modernstem Code, geschmiedet aus den stabilen Legierungen von TypeScript und der Reaktivität von Vue.js.
+
+Sie schuf kein Schwert, sondern ein Prisma der Klarheit: Das Aletheia Labeling Studio.
+
+### Das dreifaltige Artefakt
+
+Sie überreichte den Sterblichen dieses Werkzeug, eine saubere Oberfläche, aufgeteilt in drei Paneele des Lichts, um den Nebel zu durchdringen:
+
+**Die geordnete Schlange (Links):** Mit einem Blick konnten die Sterblichen nun sehen, was vor ihnen lag. Die unübersichtlichen Berge von Dateien wurden zu einer klaren Queue, in der jeder Datensatz seinen Status zeigte – von "ausstehend" bis "genehmigt".
+
+**Der Altar der Prüfung (Mitte):** Hier wurde die rohe Schöpfung der Titanen (der JSON-Output) in einen Editor geladen, der mit Aletheias eigenem Blick ausgestattet war. Live-Validierung ließ Fehler rot aufleuchten, sodass die Menschen sie direkt korrigieren konnten, bevor sie Schaden anrichteten.
+
+**Die Waage des Urteils (Rechts):** Aletheia gab ihnen die Macht der Bewertung. Mit einem Schieberegler konnten sie die Qualität von 0 bis 100% bemessen und Kategorien zuweisen. Mit einem einfachen Tastendruck (Strg+S) besiegelten sie die Wahrheit und speicherten den Datensatz, oder übersprangen ihn (Strg+K), wenn er unwürdig war.
+
+### Das neue Zeitalter
+
+Mit Aletheias Werkzeug lichtete sich der Nebel. Die Arbeit, die einst Tage dauerte, wurde in Stunden erledigt, effizient navigiert mit den Pfeiltasten der Tastatur. Die Trainingsdaten, die nun in die Modelle flossen, waren nicht länger rohes Erz, sondern geläutertes Gold.
+
+Und so wachten die Sterblichen, geleitet von der Göttin der Wahrheit, darüber, dass die KI der Zukunft nicht auf Halluzinationen, sondern auf validierter Realität erbaut wurde.
 
 ---
 
