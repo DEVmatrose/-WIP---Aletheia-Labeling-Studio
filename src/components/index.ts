@@ -1,4 +1,8 @@
 // Aletheia Labeling Studio - Public API
+
+// Import global styles
+import '../style.css';
+
 export { default as AletheiaLabeler } from './AletheiaLabeler.vue';
 export { default as QueuePanel } from './QueuePanel.vue';
 export { default as EditorPanel } from './EditorPanel.vue';

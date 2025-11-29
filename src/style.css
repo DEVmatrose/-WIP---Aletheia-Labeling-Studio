@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aletheia Component Base Styles */
+@layer components {
+  /* Container */
+  .aletheia-container {
+    @apply w-full h-full bg-gray-50 dark:bg-gray-900;
+  }
+
+  /* Panel */
+  .aletheia-panel {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700;
+  }
+
+  /* Buttons */
+  .aletheia-button {
+    @apply px-4 py-2.5 rounded-lg font-medium transition-all duration-200 
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .aletheia-button-primary {
+    @apply bg-aletheia-primary text-white hover:bg-aletheia-primary-dark 
+           focus:ring-aletheia-primary shadow-sm hover:shadow-md;
+  }
+
+  .aletheia-button-success {
+    @apply bg-green-600 text-white hover:bg-green-700 
+           focus:ring-green-500 shadow-sm hover:shadow-md;
+  }
+
+  .aletheia-button-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300 
+           dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600
+           focus:ring-gray-400;
+  }
+
+  .aletheia-button-danger {
+    @apply bg-red-600 text-white hover:bg-red-700 
+           focus:ring-red-500;
+  }
+
+  /* Input Fields */
+  .aletheia-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg
+           focus:outline-none focus:ring-2 focus:ring-aletheia-primary focus:border-transparent
+           dark:bg-gray-700 dark:border-gray-600 dark:text-white
+           placeholder:text-gray-400 dark:placeholder:text-gray-500;
+  }
+
+  /* Select Dropdown */
+  .aletheia-select {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg
+           bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white
+           focus:outline-none focus:ring-2 focus:ring-aletheia-primary focus:border-transparent
+           cursor-pointer;
+  }
+
+  /* Badge */
+  .aletheia-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .aletheia-badge-technical {
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200;
+  }
+
+  .aletheia-badge-research {
+    @apply bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200;
+  }
+
+  .aletheia-badge-business {
+    @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+  }
+
+  .aletheia-badge-meeting-protocol {
+    @apply bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200;
+  }
+
+  .aletheia-badge-customer-feedback {
+    @apply bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200;
+  }
+
+  .aletheia-badge-email-classification {
+    @apply bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200;
+  }
+
+  /* Slider */
+  .aletheia-slider {
+    @apply w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer
+           dark:bg-gray-700;
+  }
+
+  .aletheia-slider::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 rounded-full cursor-pointer transition-colors;
+    background-color: #3b82f6;
+  }
+  
+  .aletheia-slider::-webkit-slider-thumb:hover {
+    background-color: #2563eb;
+  }
+
+  .aletheia-slider::-moz-range-thumb {
+    @apply w-5 h-5 rounded-full cursor-pointer border-0 transition-colors;
+    background-color: #3b82f6;
+  }
+  
+  .aletheia-slider::-moz-range-thumb:hover {
+    background-color: #2563eb;
+  }
+
+  /* Code Editor */
+  .aletheia-editor {
+    @apply font-mono text-sm bg-gray-900 text-gray-100 rounded-lg p-4
+           overflow-auto border border-gray-700;
+  }
+
+  /* Status Badge */
+  .aletheia-status-pending {
+    @apply text-yellow-600 dark:text-yellow-400;
+  }
+
+  .aletheia-status-completed {
+    @apply text-green-600 dark:text-green-400;
+  }
+
+  .aletheia-status-skipped {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+
+  .aletheia-status-validated {
+    @apply text-blue-600 dark:text-blue-400;
+  }
+}
+
+/* Custom Animations */
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500 dark:bg-gray-500;
+}
+
+/* Keyboard Shortcuts */
+kbd {
+  @apply inline-flex items-center justify-center px-2 py-1
+         text-xs font-mono font-semibold
+         bg-gray-100 dark:bg-gray-800
+         border border-gray-300 dark:border-gray-600
+         rounded shadow-sm;
+}

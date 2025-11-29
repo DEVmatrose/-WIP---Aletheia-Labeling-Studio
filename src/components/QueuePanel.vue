@@ -51,9 +51,24 @@
       >
         <!-- Item Header -->
         <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-mono text-gray-500 dark:text-gray-400">
-            #{{ item.id.substring(0, 8) }}
-          </span>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono text-gray-500 dark:text-gray-400">
+              #{{ item.id.substring(0, 8) }}
+            </span>
+            <!-- Status Indicator -->
+            <span
+              v-if="item.status"
+              :class="[
+                'text-xs px-1.5 py-0.5 rounded',
+                item.status === 'completed' ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300' :
+                item.status === 'skipped' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300' :
+                item.status === 'validated' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300' :
+                'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
+              ]"
+            >
+              {{ item.status }}
+            </span>
+          </div>
           <span
             v-if="item.pillar"
             :class="[
@@ -66,23 +81,25 @@
         </div>
 
         <!-- Item Preview -->
-        <div class="text-sm text-gray-700 dark:text-gray-300 line-clamp-2">
-          {{ item.input.substring(0, 100) }}{{ item.input.length > 100 ? '...' : '' }}
+        <div class="text-sm text-gray-700 dark:text-gray-300 line-clamp-2 mb-1">
+          {{ item.input.substring(0, 120) }}{{ item.input.length > 120 ? '...' : '' }}
         </div>
 
         <!-- Item Footer -->
         <div class="mt-2 flex items-center justify-between text-xs">
-          <span
-            v-if="item.category"
-            class="text-gray-500 dark:text-gray-400"
-          >
-            {{ item.category }}
+          <span class="text-gray-500 dark:text-gray-400">
+            {{ new Date().toLocaleDateString() }}
           </span>
           <span
             v-if="item.qualityScore"
-            class="text-gray-500 dark:text-gray-400"
+            :class="[
+              'font-medium px-2 py-0.5 rounded',
+              item.qualityScore >= 0.8 ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300' :
+              item.qualityScore >= 0.6 ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300' :
+              'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'
+            ]"
           >
-            Quality: {{ Math.round(item.qualityScore * 100) }}%
+            {{ Math.round(item.qualityScore * 100) }}%
           </span>
         </div>
       </div>

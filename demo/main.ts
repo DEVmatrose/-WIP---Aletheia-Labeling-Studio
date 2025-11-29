@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import '../src/styles/aletheia.css';
+import '../src/style.css';
 
 createApp(App).mount('#app');

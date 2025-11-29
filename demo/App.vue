@@ -104,37 +104,68 @@ function showToast(message: string, type: 'success' | 'error' = 'success') {
 }
 
 function handleSave(item: AletheiaItem) {
-  console.log('Saved item:', item);
-  showToast(`Item #${item.id.substring(0, 8)} approved and saved!`, 'success');
+  loading.value = true;
   
-  // Simulate API call
+  console.log('💾 Saving item:', {
+    id: item.id,
+    pillar: item.pillar,
+    qualityScore: item.qualityScore,
+    status: item.status
+  });
+  
+  // Simulate API call with realistic delay
   setTimeout(() => {
-    console.log('Item saved to backend');
-  }, 500);
+    loading.value = false;
+    
+    // Simulate random success/failure (90% success rate)
+    const success = Math.random() > 0.1;
+    
+    if (success) {
+      showToast(`✅ Item #${item.id} saved successfully to database!`, 'success');
+      console.log('✅ API Response: Item saved', { timestamp: new Date().toISOString() });
+    } else {
+      showToast(`❌ Failed to save item #${item.id}. Please try again.`, 'error');
+      console.error('❌ API Error: Network timeout');
+    }
+  }, 800);
 }
 
 function handleValidate(item: AletheiaItem, isValid: boolean, message?: string) {
-  console.log('Validation result:', { item, isValid, message });
+  console.log('🔍 Validation result:', { 
+    id: item.id,
+    isValid, 
+    message,
+    pillar: item.pillar,
+    qualityScore: item.qualityScore 
+  });
+  
   if (!isValid && message) {
-    showToast(message, 'error');
+    showToast(`⚠️ ${message}`, 'error');
+  } else if (isValid) {
+    showToast(`✓ Validation passed for #${item.id.substring(0, 8)}`, 'success');
   }
 }
 
 function handleSkip(item: AletheiaItem) {
-  console.log('Skipped item:', item);
-  showToast(`Item #${item.id.substring(0, 8)} skipped`, 'success');
+  console.log('⏭️ Skipped item:', item.id);
+  showToast(`⏭️ Item #${item.id} marked as skipped`, 'success');
 }
 
 onMounted(() => {
-  // Load sample data
-  sampleItems.value = sampleData.map(item => ({
-    ...item,
-    pillar: item.category,
+  // Load sample data and transform to AletheiaItem format
+  sampleItems.value = sampleData.map((item: any) => ({
+    id: item.id,
+    input: item.input,
+    output: typeof item.output === 'string' ? item.output : JSON.stringify(item.output, null, 2),
+    pillar: item.category || 'technical',
     qualityScore: item.metadata?.quality_score || 0.85,
     status: (item.status || 'pending') as AletheiaStatus,
+    metadata: item.metadata || {},
   }));
   
-  console.log('Aletheia Demo loaded with', sampleItems.value.length, 'samples');
+  console.log('🎯 Aletheia Demo loaded with', sampleItems.value.length, 'samples');
+  console.log('💡 Use arrow keys (← →) or buttons to navigate');
+  console.log('💾 Press Ctrl+S to save current item');
 });
 </script>
 

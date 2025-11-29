@@ -28,11 +28,11 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/aletheia.es.js",
-      "require": "./dist/aletheia.umd.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/aletheia.umd.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/aletheia-labeling-studio.css"
   },
   "files": [
     "dist",

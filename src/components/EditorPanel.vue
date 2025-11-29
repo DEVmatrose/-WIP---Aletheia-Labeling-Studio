@@ -128,26 +128,54 @@ watch(() => props.item, (newItem) => {
 // Initialize editor (simplified - full Monaco integration would go here)
 onMounted(() => {
   if (editorContainer.value) {
-    // TODO: Initialize Monaco Editor
-    // For now, create a simple textarea
+    // Create enhanced textarea with better UX
     const textarea = document.createElement('textarea');
-    textarea.className = 'w-full h-full p-3 font-mono text-sm bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 focus:outline-none';
-    textarea.value = props.item ? JSON.stringify(props.item.output, null, 2) : '';
+    textarea.className = 'w-full h-full p-4 font-mono text-sm bg-gray-900 text-gray-100 focus:outline-none focus:ring-2 focus:ring-aletheia-primary resize-none';
+    textarea.style.tabSize = '2';
+    textarea.placeholder = props.allowEdit ? 'Enter JSON output here...' : 'No output available';
+    
+    // Format initial value
+    const initialValue = props.item?.output || '';
+    if (typeof initialValue === 'object') {
+      textarea.value = JSON.stringify(initialValue, null, 2);
+    } else {
+      textarea.value = initialValue;
+    }
+    
     textarea.readOnly = !props.allowEdit;
     
+    // Handle Tab key for indentation
+    textarea.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        textarea.value = textarea.value.substring(0, start) + '  ' + textarea.value.substring(end);
+        textarea.selectionStart = textarea.selectionEnd = start + 2;
+      }
+    });
+    
+    // Emit updates with validation
     textarea.addEventListener('input', (e) => {
+      const value = (e.target as HTMLTextAreaElement).value;
       try {
-        const parsed = JSON.parse((e.target as HTMLTextAreaElement).value);
+        const parsed = JSON.parse(value);
         emit('update:output', parsed);
+        // Visual feedback: valid JSON
+        textarea.style.borderColor = '#10b981';
       } catch {
-        // Invalid JSON, don't emit
+        // Visual feedback: invalid JSON
+        textarea.style.borderColor = '#ef4444';
       }
     });
     
     editorContainer.value.appendChild(textarea);
     editor = {
       getValue: () => textarea.value,
-      setValue: (value: string) => { textarea.value = value; },
+      setValue: (value: string) => { 
+        textarea.value = value;
+        textarea.style.borderColor = '';
+      },
     };
   }
 });

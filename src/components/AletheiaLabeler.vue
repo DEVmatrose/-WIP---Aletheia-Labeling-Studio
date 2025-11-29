@@ -31,9 +31,9 @@
     </div>
 
     <!-- Main Grid Layout -->
-    <div class="grid grid-cols-12 gap-4 h-screen p-4">
+    <div class="grid grid-cols-12 gap-4 h-[calc(100vh-140px)] p-4">
       <!-- Left: Queue Panel -->
-      <div class="col-span-3">
+      <div class="col-span-3 h-full">
         <QueuePanel
           :items="items"
           :stats="stats"
@@ -44,7 +44,7 @@
       </div>
 
       <!-- Center: Editor Panel -->
-      <div class="col-span-6">
+      <div class="col-span-6 h-full">
         <EditorPanel
           :item="currentItem"
           :allow-edit="config?.allowEdit !== false"
@@ -53,7 +53,7 @@
       </div>
 
       <!-- Right: Validation Panel -->
-      <div class="col-span-3">
+      <div class="col-span-3 h-full">
         <ValidationPanel
           :item="currentItem"
           :config="config"
@@ -71,16 +71,28 @@
       </div>
     </div>
 
-    <!-- Keyboard Shortcuts Hint -->
+    <!-- Keyboard Shortcuts Hint (Bottom Bar) -->
     <div
       v-if="config?.enableKeyboardShortcuts !== false"
-      class="fixed bottom-4 right-4 bg-gray-800 text-white text-xs px-3 py-2 rounded-md shadow-lg"
+      class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white text-xs px-6 py-3 border-t border-gray-700 shadow-lg z-40"
     >
-      <div class="flex gap-4">
-        <span><kbd class="bg-gray-700 px-1 rounded">Ctrl+S</kbd> Save</span>
-        <span><kbd class="bg-gray-700 px-1 rounded">Ctrl+K</kbd> Skip</span>
-        <span><kbd class="bg-gray-700 px-1 rounded">→</kbd> Next</span>
-        <span><kbd class="bg-gray-700 px-1 rounded">←</kbd> Prev</span>
+      <div class="max-w-7xl mx-auto flex items-center justify-center gap-6">
+        <span class="flex items-center gap-1">
+          <kbd class="bg-gray-700 px-2 py-1 rounded shadow">Ctrl+S</kbd>
+          <span class="text-gray-300">Save</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <kbd class="bg-gray-700 px-2 py-1 rounded shadow">Ctrl+K</kbd>
+          <span class="text-gray-300">Skip</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <kbd class="bg-gray-700 px-2 py-1 rounded shadow">→</kbd>
+          <span class="text-gray-300">Next</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <kbd class="bg-gray-700 px-2 py-1 rounded shadow">←</kbd>
+          <span class="text-gray-300">Prev</span>
+        </span>
       </div>
     </div>
   </div>
