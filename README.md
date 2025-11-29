@@ -1,6 +1,8 @@
 <div align="center">
 
-![Aletheia Logo](src/assets/aletheia.png)
+![Aletheia Logo](src/assets/altheia.png)
+
+</div>
 
 # 🏛️ Aletheia Labeling Studio
 
@@ -8,7 +10,6 @@
 ![Demo Only](https://img.shields.io/badge/Demo-No_Database-orange?style=for-the-badge)
 
 > *Manual review and validation interface for LLM-generated training data.*
-
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Vue.js](https://img.shields.io/badge/Vue.js-3.5-4FC08D?logo=vue.js)](https://vuejs.org/)
