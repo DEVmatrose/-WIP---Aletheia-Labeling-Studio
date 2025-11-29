@@ -1,0 +1,73 @@
+{
+  "name": "aletheia-labeling-studio",
+  "version": "0.1.0",
+  "description": "A modern, type-safe Vue.js 3 labeling studio for machine learning training data curation",
+  "type": "module",
+  "author": "DEVmatrose",
+  "license": "MIT",
+  "homepage": "https://github.com/DEVmatrose/Aletheia-Labeling-Studio#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DEVmatrose/Aletheia-Labeling-Studio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DEVmatrose/Aletheia-Labeling-Studio/issues"
+  },
+  "keywords": [
+    "vue3",
+    "typescript",
+    "machine-learning",
+    "labeling",
+    "training-data",
+    "annotation",
+    "data-curation",
+    "ml-ops"
+  ],
+  "main": "./dist/aletheia.umd.js",
+  "module": "./dist/aletheia.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/aletheia.es.js",
+      "require": "./dist/aletheia.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "dev:demo": "vite --config vite.config.demo.ts",
+    "build:lib": "vite build",
+    "build:demo": "vite build --config vite.config.demo.ts",
+    "build": "npm run build:lib && npm run build:demo",
+    "type-check": "vue-tsc --noEmit",
+    "preview": "vite preview",
+    "test": "vitest",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix"
+  },
+  "dependencies": {
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "autoprefixer": "^10.4.20",
+    "monaco-editor": "^0.52.2",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5",
+    "vite-plugin-dts": "^4.3.0",
+    "vitest": "^2.1.8",
+    "vue-tsc": "^2.1.10"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  }
+}

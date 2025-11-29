@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aletheia Custom Styles */
+.aletheia-container {
+  @apply w-full h-full bg-white dark:bg-gray-900;
+}
+
+.aletheia-panel {
+  @apply bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm;
+}
+
+.aletheia-button {
+  @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+}
+
+.aletheia-button-primary {
+  @apply bg-aletheia-primary text-white hover:bg-blue-600 active:bg-blue-700;
+}
+
+.aletheia-button-secondary {
+  @apply bg-gray-200 text-gray-700 hover:bg-gray-300 active:bg-gray-400 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600;
+}
+
+.aletheia-button-success {
+  @apply bg-aletheia-success text-white hover:bg-green-600 active:bg-green-700;
+}
+
+.aletheia-button-danger {
+  @apply bg-aletheia-error text-white hover:bg-red-600 active:bg-red-700;
+}
+
+.aletheia-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-aletheia-primary dark:bg-gray-800 dark:border-gray-600 dark:text-white;
+}
+
+.aletheia-select {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-aletheia-primary dark:bg-gray-800 dark:border-gray-600 dark:text-white;
+}
+
+.aletheia-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.aletheia-badge-technical {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200;
+}
+
+.aletheia-badge-psychological {
+  @apply bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200;
+}
+
+.aletheia-badge-scientific {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+}
+
+.aletheia-badge-pending {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
+}
+
+.aletheia-badge-completed {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+}
+
+.aletheia-badge-skipped {
+  @apply bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200;
+}
