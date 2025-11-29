@@ -8,6 +8,7 @@
 
 > *Manual review and validation interface for LLM-generated training data.*
 
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Vue.js](https://img.shields.io/badge/Vue.js-3.5-4FC08D?logo=vue.js)](https://vuejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript)](https://www.typescriptlang.org/)
@@ -27,6 +28,7 @@
 **Ideal für:** Alle Arbeitsabläufe, bei denen Sie strukturierte JSON-Trainingsdaten generieren (Sitzungsprotokolle, Kundenfeedback-Analysen, Klassifizierungsaufgaben, Frage-Antwort-Paare) und eine Validierung durch Menschen benötigen, bevor Sie diese für das Modelltraining verwenden können.
 
 
+![Before vs After Aletheia](docs/images/aletheia-header.png)
 ---
 
 ## ✨ Why Aletheia?
