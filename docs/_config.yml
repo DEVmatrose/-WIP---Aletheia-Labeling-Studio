@@ -1,0 +1,5 @@
+theme: jekyll-theme-primer
+include:
+  - demo
+exclude:
+  - README.md
