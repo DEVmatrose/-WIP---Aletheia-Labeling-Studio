@@ -70,7 +70,7 @@
 
 ### 🌐 Live Demo
 
-**[→ Try Aletheia Online](https://devmatrose.github.io/Aletheia-Labeling-Studio/demo/)**
+**[→ Try Aletheia Online](https://devmatrose.github.io/Aletheia-Labeling-Studio/)**
 
 No installation required - works directly in your browser!
 
