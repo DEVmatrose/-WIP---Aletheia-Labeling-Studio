@@ -7,10 +7,10 @@
           <span class="text-2xl">⚠️</span>
           <div>
             <p class="text-sm font-medium text-yellow-900 dark:text-yellow-200">
-              <strong>Demo Mode:</strong> Showing KAIROS training data schemas (not real data)
+              <strong>Demo 2 - Smart Editor:</strong> Form-based editing for non-technical users
             </p>
             <p class="text-xs text-yellow-700 dark:text-yellow-300 mt-0.5">
-              Real training dataset contains 171 examples. This demo shows 4 task type schemas.
+              Switch between Visual View (forms) and JSON View (code) • Only Technical tab functional
             </p>
           </div>
         </div>
@@ -33,7 +33,7 @@
               Aletheia Labeling Studio
             </h1>
             <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-              Cost-effective training data curation for custom LLMs
+              Demo 2: Smart Editor with Dynamic Forms
             </p>
           </div>
           
@@ -55,15 +55,45 @@
 
     <!-- Main Content -->
     <main class="h-[calc(100vh-100px)]">
-      <AletheiaLabeler
-        :items="sampleItems"
-        :config="demoConfig"
-        :loading="loading"
-        @select="handleSelect"
-        @save="handleSave"
-        @validate="handleValidate"
-        @skip="handleSkip"
-      />
+      <div class="grid grid-cols-12 gap-4 h-full p-4">
+        <!-- Left: Queue Panel with Tabs -->
+        <div class="col-span-3 h-full">
+          <QueuePanelWithTabs
+            :items="sampleItems"
+            :stats="stats"
+            :progress="progress"
+            :current-item-id="currentItem?.id"
+            @select="selectItem"
+          />
+        </div>
+
+        <!-- Center: Smart Editor Panel -->
+        <div class="col-span-6 h-full">
+          <SmartEditorPanel
+            :item="currentItem"
+            :allow-edit="true"
+            @update:output="updateOutput"
+          />
+        </div>
+
+        <!-- Right: Validation Panel -->
+        <div class="col-span-3 h-full">
+          <ValidationPanel
+            :item="currentItem"
+            :config="demoConfig"
+            :has-next="hasNext"
+            :has-previous="hasPrevious"
+            @update:pillar="updatePillar"
+            @update:quality="updateQualityScore"
+            @update:metadata="updateMetadata"
+            @validate="handleValidate"
+            @save="handleSave"
+            @skip="handleSkip"
+            @next="loadNext"
+            @previous="loadPrevious"
+          />
+        </div>
+      </div>
     </main>
 
     <!-- Toast Notification -->
@@ -83,12 +113,15 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { AletheiaLabeler } from '../src/components';
-import type { AletheiaItem, AletheiaConfig, AletheiaStatus } from '../src/types';
+import QueuePanelWithTabs from '../src/components/QueuePanelWithTabs.vue';
+import SmartEditorPanel from '../src/components/SmartEditorPanel.vue';
+import ValidationPanel from '../src/components/ValidationPanel.vue';
+import { useAletheia } from '../src/composables/useAletheia';
+import type { AletheiaItem, AletheiaConfig } from '../src/types';
 import { MOCK_ALL_DATA } from '../src/data/mockData';
 
 const loading = ref(false);
-const sampleItems = ref<AletheiaItem[]>([]);
+const sampleItems = ref<AletheiaItem[]>(MOCK_ALL_DATA);
 
 const toast = ref({
   show: false,
@@ -115,20 +148,38 @@ const demoConfig: AletheiaConfig = {
   },
 };
 
+const {
+  currentItem,
+  stats,
+  progress,
+  hasNext,
+  hasPrevious,
+  loadNext,
+  loadPrevious,
+  selectItem: selectItemById,
+  updateOutput,
+  updatePillar,
+  updateQualityScore,
+} = useAletheia(MOCK_ALL_DATA, demoConfig);
+
+function selectItem(id: string) {
+  selectItemById(id);
+}
+
+function updateMetadata(key: string, value: any) {
+  if (currentItem.value) {
+    if (!currentItem.value.metadata) {
+      currentItem.value.metadata = {};
+    }
+    currentItem.value.metadata[key] = value;
+  }
+}
+
 function showToast(message: string, type: 'success' | 'error' = 'success') {
   toast.value = { show: true, message, type };
   setTimeout(() => {
     toast.value.show = false;
   }, 3000);
-}
-
-function handleSelect(item: AletheiaItem) {
-  console.log('🖱️ Item selected:', {
-    id: item.id,
-    category: item.category,
-    status: item.status
-  });
-  console.log('✅ Selection handled - EditorPanel should update now');
 }
 
 function handleSave(item: AletheiaItem) {
@@ -180,18 +231,9 @@ function handleSkip(item: AletheiaItem) {
 }
 
 onMounted(() => {
-  // Load KAIROS training data schemas (4 task types)
-  sampleItems.value = MOCK_ALL_DATA;
-  
-  console.log('🎯 Aletheia Demo loaded with', sampleItems.value.length, 'training examples');
-  console.log('📊 KAIROS Task Types:', {
-    'Task A (Profiles)': sampleItems.value.filter(i => i.category === 'task_a_profiles').length,
-    'Task B (Matching)': sampleItems.value.filter(i => i.category === 'task_b_matching').length,
-    'Task C (Monitoring)': sampleItems.value.filter(i => i.category === 'task_c_monitoring').length,
-    'Task D (Schaufenster)': sampleItems.value.filter(i => i.category === 'task_d_schaufenster').length
-  });
-  console.log('💡 Use arrow keys (← →) or buttons to navigate');
-  console.log('💾 Press Ctrl+S to save current item');
+  console.log('🎯 Aletheia Demo 2 (Smart Editor) loaded with', sampleItems.value.length, 'training examples');
+  console.log('💡 Switch between Visual View (forms) and JSON View (code)');
+  console.log('🔧 Only Technical tab is functional in this demo');
 });
 </script>
 

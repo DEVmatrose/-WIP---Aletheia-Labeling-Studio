@@ -4,7 +4,10 @@ import type { AletheiaItem, AletheiaConfig, AletheiaStats } from '../types';
 /**
  * Composable for managing Aletheia labeling state
  */
-export function useAletheia(items: AletheiaItem[], config?: AletheiaConfig) {
+export function useAletheia(itemsProp: AletheiaItem[], config?: AletheiaConfig) {
+  // Make items reactive
+  const items = ref<AletheiaItem[]>(itemsProp);
+  
   // Current active item
   const currentItem = ref<AletheiaItem | null>(null);
   
@@ -14,26 +17,39 @@ export function useAletheia(items: AletheiaItem[], config?: AletheiaConfig) {
   // Loading state
   const loading = ref(false);
 
+  // Watch for external items changes
+  watch(() => itemsProp, (newItems) => {
+    items.value = newItems;
+    // Re-initialize if items changed and no current item
+    if (!currentItem.value && newItems.length > 0) {
+      const firstPending = newItems.find(item => item.status === 'pending' || !item.status);
+      if (firstPending) {
+        currentItem.value = { ...firstPending };
+        currentItem.value.status = 'in-progress';
+      }
+    }
+  }, { deep: true, immediate: true });
+
   // Computed: Queue filtered by status
   const pendingItems = computed(() => 
-    items.filter(item => item.status === 'pending' || !item.status)
+    items.value.filter(item => item.status === 'pending' || !item.status)
   );
 
   const completedItems = computed(() =>
-    items.filter(item => item.status === 'completed')
+    items.value.filter(item => item.status === 'completed')
   );
 
   const skippedItems = computed(() =>
-    items.filter(item => item.status === 'skipped')
+    items.value.filter(item => item.status === 'skipped')
   );
 
   // Computed: Statistics
   const stats = computed<AletheiaStats>(() => {
-    const total = items.length;
+    const total = items.value.length;
     const pending = pendingItems.value.length;
     const completed = completedItems.value.length;
     const skipped = skippedItems.value.length;
-    const inProgress = items.filter(item => item.status === 'in-progress').length;
+    const inProgress = items.value.filter(item => item.status === 'in-progress').length;
 
     const averageQuality = completed > 0
       ? completedItems.value
@@ -46,8 +62,8 @@ export function useAletheia(items: AletheiaItem[], config?: AletheiaConfig) {
 
   // Computed: Progress percentage
   const progress = computed(() => {
-    if (items.length === 0) return 0;
-    return Math.round(((stats.value.completed + stats.value.skipped) / items.length) * 100);
+    if (items.value.length === 0) return 0;
+    return Math.round(((stats.value.completed + stats.value.skipped) / items.value.length) * 100);
   });
 
   // Computed: Has next item
@@ -88,13 +104,16 @@ export function useAletheia(items: AletheiaItem[], config?: AletheiaConfig) {
    * Select specific item by ID
    */
   function selectItem(id: string) {
-    const item = items.find(item => item.id === id);
+    const item = items.value.find(item => item.id === id);
     if (item) {
-      currentItem.value = item;
+      currentItem.value = { ...item }; // Create a copy to ensure reactivity
       currentIndex.value = pendingItems.value.findIndex(i => i.id === id);
-      if (currentItem.value) {
+      if (currentItem.value.status !== 'completed' && currentItem.value.status !== 'skipped') {
         currentItem.value.status = 'in-progress';
       }
+      console.log('📦 useAletheia.selectItem: currentItem set to', currentItem.value.id);
+    } else {
+      console.warn('⚠️ useAletheia.selectItem: Item not found', id);
     }
   }
 
@@ -203,11 +222,11 @@ export function useAletheia(items: AletheiaItem[], config?: AletheiaConfig) {
   }
 
   // Initialize: Load first item
-  watch(() => items.length, (newLength) => {
+  watch(() => items.value.length, (newLength) => {
     if (newLength > 0 && !currentItem.value && pendingItems.value.length > 0) {
       const firstItem = pendingItems.value[0];
       if (firstItem) {
-        currentItem.value = firstItem;
+        currentItem.value = { ...firstItem }; // Create a copy
         currentItem.value.status = 'in-progress';
       }
     }

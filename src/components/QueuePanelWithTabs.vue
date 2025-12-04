@@ -1,6 +1,32 @@
 <template>
-  <div class="queue-panel aletheia-panel h-full overflow-hidden flex flex-col">
-    <!-- Header -->
+  <div class="queue-panel-with-tabs aletheia-panel h-full overflow-hidden flex flex-col">
+    <!-- Pillar Tabs (Only Technical active in demo) -->
+    <div class="pillar-tabs flex border-b border-gray-200 dark:border-gray-700">
+      <button
+        class="flex-1 px-4 py-3 text-sm font-medium transition-all
+               text-aletheia-primary border-b-2 border-aletheia-primary bg-white dark:bg-gray-800"
+      >
+        🔧 Technical
+      </button>
+      <button
+        disabled
+        class="flex-1 px-4 py-3 text-sm font-medium 
+               text-gray-400 dark:text-gray-600 bg-gray-50 dark:bg-gray-900 cursor-not-allowed"
+        title="Coming in Production Version"
+      >
+        🧠 Psychological
+      </button>
+      <button
+        disabled
+        class="flex-1 px-4 py-3 text-sm font-medium
+               text-gray-400 dark:text-gray-600 bg-gray-50 dark:bg-gray-900 cursor-not-allowed"
+        title="Coming in Production Version"
+      >
+        📚 Scientific
+      </button>
+    </div>
+
+    <!-- Header (Stats & Progress) -->
     <div class="p-4 border-b border-gray-200 dark:border-gray-700">
       <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
         Queue
@@ -22,7 +48,7 @@
     <div class="p-4 border-b border-gray-200 dark:border-gray-700">
       <div class="bg-blue-50 border-l-4 border-blue-500 dark:bg-blue-900/20 p-3 rounded-lg text-xs">
         <p class="text-gray-700 dark:text-gray-300">
-          🔧 <strong>KAIROS Training Data</strong> - 4 Task Types: Profile Creation, Match Reasoning, Project Monitoring, Service Analysis
+          🔧 <strong>Technical Tab:</strong> KAIROS Training Data - Profile Analysis, Matching, Monitoring, Service Analysis
         </p>
       </div>
     </div>
@@ -139,7 +165,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import type { AletheiaItem, AletheiaStats, AletheiaPillar } from '../types';
+import type { AletheiaItem, AletheiaStats } from '../types';
 
 interface Props {
   items: AletheiaItem[];
@@ -165,7 +191,6 @@ const filters = computed(() => [
 
 const filteredItems = computed(() => {
   return props.items.filter(item => {
-    // Filter by status
     const statusMatch = activeFilter.value === 'pending'
       ? item.status === 'pending' || item.status === 'in-progress' || !item.status
       : item.status === activeFilter.value;

@@ -42,9 +42,11 @@
   "scripts": {
     "dev": "vite",
     "dev:demo": "vite --config vite.config.demo.ts",
+    "dev:demo2": "vite --config vite.config.demo2.ts",
     "build:lib": "vite build",
     "build:demo": "vite build --config vite.config.demo.ts",
-    "build": "npm run build:lib && npm run build:demo",
+    "build:demo2": "vite build --config vite.config.demo2.ts",
+    "build": "npm run build:lib && npm run build:demo2",
     "type-check": "vue-tsc --noEmit",
     "preview": "vite preview",
     "test": "vitest",

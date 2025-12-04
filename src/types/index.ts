@@ -11,9 +11,9 @@ export type AletheiaStatus = 'pending' | 'in-progress' | 'completed' | 'skipped'
 
 /**
  * Data pillars/categories for labeling
- * Can be extended with custom categories
+ * Three-pillar system for AI training data validation
  */
-export type AletheiaPillar = 'technical' | 'research' | 'business' | string;
+export type AletheiaPillar = 'technical' | 'psychological' | 'scientific';
 
 /**
  * Core labeling item structure

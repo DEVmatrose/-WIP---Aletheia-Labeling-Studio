@@ -1,0 +1,431 @@
+/**
+ * Aletheia Labeling Studio - Mock Data
+ * 
+ * Demo data for the three-pillar system:
+ * - Technical (90%): Real platform interactions
+ * - Psychological (10%): Behavioral analysis
+ * - Scientific: Academic materials
+ * 
+ * ⚠️ IMPORTANT: This is MOCK DATA for demonstration only!
+ * Real deployment connects to secure database with actual training data.
+ */
+
+import type { AletheiaItem } from '../types'
+
+/**
+ * TECHNICAL PILLAR - Mock Examples
+ * Source: Simulated user interactions from AI platform
+ * Focus: Accuracy, Tonality, Task-Fit
+ */
+export const MOCK_TECHNICAL_DATA: AletheiaItem[] = [
+  {
+    id: 'tech-001',
+    pillar: 'technical',
+    input: 'User Profile Analysis: Creative professional feeling overwhelmed',
+    output: {
+      task_type: 'A',
+      archetyp: 'perfektionist',
+      tonality: 'luna',
+      response: 'I understand you\'re feeling overwhelmed - many creative professionals experience this...'
+    },
+    category: 'Task-A-Profile',
+    metadata: {
+      quality_score: 4,
+      tonality_match: true,
+      task_type_valid: true,
+      avatar_balance_ok: true,
+      archetyp: 'perfektionist'
+    },
+    qualityScore: 0.85,
+    status: 'pending',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'tech-002',
+    pillar: 'technical',
+    input: 'Matching Analysis: Macher-type entrepreneur looking for technical co-founder',
+    output: {
+      task_type: 'B',
+      archetyp: 'macher',
+      tonality: 'orion',
+      response: 'Based on your goal-oriented profile, I recommend focusing on developers with startup experience...'
+    },
+    category: 'Task-B-Matching',
+    metadata: {
+      quality_score: 5,
+      tonality_match: true,
+      task_type_valid: true,
+      avatar_balance_ok: true,
+      archetyp: 'macher'
+    },
+    qualityScore: 0.92,
+    status: 'pending',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'tech-003',
+    pillar: 'technical',
+    input: 'Project Monitoring: Chaot-type struggling with deadlines',
+    output: {
+      task_type: 'C',
+      archetyp: 'chaot',
+      tonality: 'luna',
+      response: 'Let\'s break this down into smaller steps. What feels most urgent right now?'
+    },
+    category: 'Task-C-Monitoring',
+    metadata: {
+      quality_score: 4,
+      tonality_match: true,
+      task_type_valid: true,
+      avatar_balance_ok: true,
+      archetyp: 'chaot'
+    },
+    qualityScore: 0.78,
+    status: 'completed',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'tech-004',
+    pillar: 'technical',
+    input: 'Schaufenster Analysis: Beobachter-type creating portfolio',
+    output: {
+      task_type: 'D',
+      archetyp: 'beobachter',
+      tonality: 'orion',
+      response: 'Your analytical approach is valuable. Consider highlighting projects that demonstrate systematic thinking...'
+    },
+    category: 'Task-D-Schaufenster',
+    metadata: {
+      quality_score: 4,
+      tonality_match: true,
+      task_type_valid: true,
+      avatar_balance_ok: true,
+      archetyp: 'beobachter'
+    },
+    qualityScore: 0.88,
+    status: 'pending',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'tech-005',
+    pillar: 'technical',
+    input: 'Profile Analysis: User expressing anxiety about project launch',
+    output: {
+      task_type: 'A',
+      archetyp: 'perfektionist',
+      tonality: 'luna',
+      response: 'I notice you\'re feeling anxious. Let\'s look at what you\'ve already accomplished...'
+    },
+    category: 'Task-A-Profile',
+    metadata: {
+      quality_score: 5,
+      tonality_match: true,
+      task_type_valid: true,
+      avatar_balance_ok: true,
+      archetyp: 'perfektionist'
+    },
+    qualityScore: 0.90,
+    status: 'completed',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'tech-006',
+    pillar: 'technical',
+    input: 'Matching: Developer seeking design partner',
+    output: {
+      task_type: 'B',
+      archetyp: 'beobachter',
+      tonality: 'orion',
+      response: 'Given your technical background, I suggest looking for designers with UI/UX experience in your domain...'
+    },
+    category: 'Task-B-Matching',
+    metadata: {
+      quality_score: 4,
+      tonality_match: true,
+      task_type_valid: true,
+      avatar_balance_ok: true,
+      archetyp: 'beobachter'
+    },
+    qualityScore: 0.82,
+    status: 'pending',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'tech-007',
+    pillar: 'technical',
+    input: 'Monitoring: User reports procrastination pattern',
+    output: {
+      task_type: 'C',
+      archetyp: 'chaot',
+      tonality: 'luna',
+      response: 'Procrastination often signals misalignment. What part of the task feels unclear or unappealing?'
+    },
+    category: 'Task-C-Monitoring',
+    metadata: {
+      quality_score: 4,
+      tonality_match: true,
+      task_type_valid: true,
+      avatar_balance_ok: true,
+      archetyp: 'chaot'
+    },
+    qualityScore: 0.86,
+    status: 'pending',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'tech-008',
+    pillar: 'technical',
+    input: 'Schaufenster: Macher-type showcasing leadership projects',
+    output: {
+      task_type: 'D',
+      archetyp: 'macher',
+      tonality: 'orion',
+      response: 'Your leadership experience is a strong asset. Focus on quantifiable results and team impact...'
+    },
+    category: 'Task-D-Schaufenster',
+    metadata: {
+      quality_score: 5,
+      tonality_match: true,
+      task_type_valid: true,
+      avatar_balance_ok: true,
+      archetyp: 'macher'
+    },
+    qualityScore: 0.94,
+    status: 'completed',
+    timestamp: new Date().toISOString()
+  }
+]
+
+/**
+ * PSYCHOLOGICAL PILLAR - Mock Examples
+ * Source: Simulated behavioral analysis with psychologist validation
+ * Focus: Neutrality, Ethics, GDPR Art. 9 Compliance
+ */
+export const MOCK_PSYCHOLOGICAL_DATA: AletheiaItem[] = [
+  {
+    id: 'psych-001',
+    pillar: 'psychological',
+    input: 'Archetyp Classification: User behavior shows perfectionism patterns',
+    output: {
+      task_type: 'P1',
+      archetyp: 'perfektionist',
+      confidence: 0.87,
+      evidence: ['Detail-oriented', 'High standards', 'Anxiety about errors']
+    },
+    category: 'Task-P1-Archetyp',
+    metadata: {
+      neutrality_score: 5,
+      ethical_check: true,
+      gdpr_compliant: true,
+      psychologist_approved: false,
+      archetyp_valid: true
+    },
+    qualityScore: 0.87,
+    status: 'pending',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'psych-002',
+    pillar: 'psychological',
+    input: 'Intervention Generation: Chaot-type struggling with structure',
+    output: {
+      task_type: 'P2',
+      archetyp: 'chaot',
+      intervention: 'Suggest flexible framework with creative freedom',
+      rationale: 'Balances need for structure with creative autonomy'
+    },
+    category: 'Task-P2-Intervention',
+    metadata: {
+      neutrality_score: 4,
+      ethical_check: true,
+      gdpr_compliant: true,
+      psychologist_approved: true,
+      archetyp_valid: true
+    },
+    qualityScore: 0.82,
+    status: 'completed',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'psych-003',
+    pillar: 'psychological',
+    input: 'Success Evaluation: Macher-type achieving goals but reporting burnout',
+    output: {
+      task_type: 'P3',
+      archetyp: 'macher',
+      evaluation: 'Success achieved but at cost of wellbeing',
+      recommendation: 'Integrate rest and reflection into goal-setting'
+    },
+    category: 'Task-P3-Evaluation',
+    metadata: {
+      neutrality_score: 5,
+      ethical_check: true,
+      gdpr_compliant: true,
+      psychologist_approved: false,
+      archetyp_valid: true
+    },
+    qualityScore: 0.90,
+    status: 'pending',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'psych-004',
+    pillar: 'psychological',
+    input: 'Archetyp Analysis: Beobachter-type hesitant to take action',
+    output: {
+      task_type: 'P1',
+      archetyp: 'beobachter',
+      confidence: 0.92,
+      evidence: ['Analytical thinking', 'Research before action', 'Observational learning']
+    },
+    category: 'Task-P1-Archetyp',
+    metadata: {
+      neutrality_score: 5,
+      ethical_check: true,
+      gdpr_compliant: true,
+      psychologist_approved: true,
+      archetyp_valid: true
+    },
+    qualityScore: 0.92,
+    status: 'completed',
+    timestamp: new Date().toISOString()
+  }
+]
+
+/**
+ * SCIENTIFIC PILLAR - Mock Examples
+ * Source: Simulated open-source academic materials
+ * Focus: Citations, Methodology, Validity
+ */
+export const MOCK_SCIENTIFIC_DATA: AletheiaItem[] = [
+  {
+    id: 'sci-001',
+    pillar: 'scientific',
+    input: 'Question about agile project management principles',
+    output: {
+      task_type: 'scientific',
+      response: 'Agile methodologies emphasize iterative development, customer collaboration, and responding to change (Beck et al., 2001)...',
+      citations: ['Beck, K., et al. (2001). Manifesto for Agile Software Development.']
+    },
+    category: 'PM-Theory',
+    metadata: {
+      has_valid_citations: true,
+      methodology_valid: true,
+      open_access: true,
+      peer_reviewed: true,
+      factually_accurate: true
+    },
+    qualityScore: 0.95,
+    status: 'completed',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'sci-002',
+    pillar: 'scientific',
+    input: 'Explain Tuckman\'s stages of group development',
+    output: {
+      task_type: 'scientific',
+      response: 'Tuckman (1965) identified four stages of team development: Forming, Storming, Norming, and Performing...',
+      citations: ['Tuckman, B. W. (1965). Developmental sequence in small groups. Psychological Bulletin, 63(6), 384–399.']
+    },
+    category: 'Team-Theory',
+    metadata: {
+      has_valid_citations: true,
+      methodology_valid: true,
+      open_access: false,
+      peer_reviewed: true,
+      factually_accurate: true
+    },
+    qualityScore: 0.88,
+    status: 'pending',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'sci-003',
+    pillar: 'scientific',
+    input: 'What is growth mindset theory?',
+    output: {
+      task_type: 'scientific',
+      response: 'Dweck (2006) defines growth mindset as the belief that abilities can be developed through dedication and hard work...',
+      citations: ['Dweck, C. S. (2006). Mindset: The New Psychology of Success. Random House.']
+    },
+    category: 'Coaching-Theory',
+    metadata: {
+      has_valid_citations: true,
+      methodology_valid: true,
+      open_access: false,
+      peer_reviewed: true,
+      factually_accurate: true
+    },
+    qualityScore: 0.92,
+    status: 'completed',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'sci-004',
+    pillar: 'scientific',
+    input: 'Describe SMART goal framework',
+    output: {
+      task_type: 'scientific',
+      response: 'SMART goals are Specific, Measurable, Achievable, Relevant, and Time-bound (Doran, 1981)...',
+      citations: ['Doran, G. T. (1981). There\'s a S.M.A.R.T. way to write management\'s goals and objectives. Management Review, 70(11), 35–36.']
+    },
+    category: 'PM-Theory',
+    metadata: {
+      has_valid_citations: true,
+      methodology_valid: true,
+      open_access: false,
+      peer_reviewed: true,
+      factually_accurate: true
+    },
+    qualityScore: 0.90,
+    status: 'pending',
+    timestamp: new Date().toISOString()
+  }
+]
+
+/**
+ * Combined mock data for demo
+ */
+export const MOCK_ALL_DATA: AletheiaItem[] = [
+  ...MOCK_TECHNICAL_DATA,
+  ...MOCK_PSYCHOLOGICAL_DATA,
+  ...MOCK_SCIENTIFIC_DATA
+]
+
+/**
+ * Get mock data by pillar
+ */
+export function getMockDataByPillar(pillar: 'technical' | 'psychological' | 'scientific' | 'all'): AletheiaItem[] {
+  if (pillar === 'all') return MOCK_ALL_DATA
+  if (pillar === 'technical') return MOCK_TECHNICAL_DATA
+  if (pillar === 'psychological') return MOCK_PSYCHOLOGICAL_DATA
+  if (pillar === 'scientific') return MOCK_SCIENTIFIC_DATA
+  return []
+}
+
+/**
+ * Get pillar statistics
+ */
+export function getPillarStats() {
+  return {
+    technical: {
+      total: MOCK_TECHNICAL_DATA.length,
+      pending: MOCK_TECHNICAL_DATA.filter(d => d.status === 'pending').length,
+      completed: MOCK_TECHNICAL_DATA.filter(d => d.status === 'completed').length,
+      avgQuality: MOCK_TECHNICAL_DATA.reduce((sum, d) => sum + (d.qualityScore || 0), 0) / MOCK_TECHNICAL_DATA.length
+    },
+    psychological: {
+      total: MOCK_PSYCHOLOGICAL_DATA.length,
+      pending: MOCK_PSYCHOLOGICAL_DATA.filter(d => d.status === 'pending').length,
+      completed: MOCK_PSYCHOLOGICAL_DATA.filter(d => d.status === 'completed').length,
+      avgQuality: MOCK_PSYCHOLOGICAL_DATA.reduce((sum, d) => sum + (d.qualityScore || 0), 0) / MOCK_PSYCHOLOGICAL_DATA.length
+    },
+    scientific: {
+      total: MOCK_SCIENTIFIC_DATA.length,
+      pending: MOCK_SCIENTIFIC_DATA.filter(d => d.status === 'pending').length,
+      completed: MOCK_SCIENTIFIC_DATA.filter(d => d.status === 'completed').length,
+      avgQuality: MOCK_SCIENTIFIC_DATA.reduce((sum, d) => sum + (d.qualityScore || 0), 0) / MOCK_SCIENTIFIC_DATA.length
+    }
+  }
+}

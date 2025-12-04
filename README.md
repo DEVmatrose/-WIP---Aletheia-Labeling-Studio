@@ -52,15 +52,59 @@
 - ✅ Keyboard shortcuts for fast workflow
 - ✅ Backend-agnostic (JSON file, database, API - your choice)
 
+## 🏛️ Three-Pillar System
+
+Aletheia is specialized for AI training data with **three distinct validation workflows**:
+
+### 🔧 Technical (90%)
+**Source:** Real user interactions from AI platform  
+**Validation:** Developer review + user feedback loops  
+**Focus:** Accuracy, Tonality, Task-Fit (A/B/C/D)  
+**Volume:** Main data source, continuously growing  
+
+**Quality Criteria:**
+- Response is accurate and helpful
+- Tonality matches user archetype (Macher, Chaot, Perfektionist, Beobachter)
+- Task classification correct (A=Profile, B=Matching, C=Monitoring, D=Schaufenster)
+- Luna (empathetic) vs Orion (structured) balance appropriate
+
+### 🧠 Psychological (10%)
+**Source:** Behavioral analysis + professional validation  
+**Validation:** Professional psychologist (Human-in-the-Loop)  
+**Focus:** Neutrality, Ethics, GDPR Art. 9 compliance  
+**Volume:** Selective, highest quality standards  
+
+**Quality Criteria:**
+- Absolute neutrality (no judgment, no bias)
+- Ethical soundness (no harmful content)
+- GDPR Art. 9 compliance (sensitive psychological data)
+- Professional psychologist sign-off required
+- Evidence-based archetyp classification
+
+### 📚 Scientific
+**Source:** Open-source academic materials (PM, coaching, team theories)  
+**Validation:** Citation check + expert review  
+**Focus:** Academic rigor, proper attribution  
+**Volume:** Foundation layer, curated  
+
+**Quality Criteria:**
+- Proper academic citations (APA, IEEE)
+- Sound methodology (peer-reviewed sources)
+- Open Access / properly licensed
+- Factual accuracy verified
+
+---
+
 ## 🎯 Core Features
 
 - 🎨 **3-Panel Layout** - Queue list, JSON editor, validation controls
+- 🏛️ **Three-Pillar System** - Technical, Psychological, Scientific with distinct workflows
 - 📝 **Live JSON Editing** - Syntax highlighting, validation, format button
-- ✅ **Quality Scoring** - 0-100% slider per item
-- 🏷️ **Categorization** - Custom categories/pillars (technical, research, business, etc.)
+- ✅ **Pillar-Specific Validation** - Different quality criteria per pillar
+- 🏷️ **Smart Categorization** - Archetyp-aware (Macher, Chaot, Perfektionist, Beobachter)
 - 🔄 **Status Tracking** - pending → completed / skipped
 - ⌨️ **Keyboard Navigation** - `→` next, `←` previous, `Ctrl+S` save, `Ctrl+K` skip
-- 📊 **Progress Dashboard** - Visual stats, completion percentage
+- 📊 **Progress Dashboard** - Visual stats per pillar, completion percentage
 - 🔌 **Flexible Backend** - Props/Events API, connect to any data source
 - 📦 **Lightweight** - 7 KB gzipped, Vue 3 component
 
@@ -141,26 +185,53 @@ import type { AletheiaItem, AletheiaConfig } from 'aletheia-labeling-studio';
 const loading = ref(false);
 const trainingItems = ref<AletheiaItem[]>([
   {
-    id: 'item-001',
-    input: 'Analyze this feedback: The new feature is amazing!',
+    id: 'tech-001',
+    pillar: 'technical',
+    input: 'User Profile Analysis: Creative professional feeling overwhelmed',
     output: {
-      sentiment: 'positive',
-      category: 'feature-feedback',
-      priority: 'low',
+      task_type: 'A',
+      archetyp: 'perfektionist',
+      tonality: 'luna',
+      response: 'I understand you\'re feeling overwhelmed...'
+    },
+    metadata: {
+      quality_score: 4,
+      tonality_match: true,
+      archetyp: 'perfektionist'
     },
     status: 'pending',
     qualityScore: 0.85,
-    pillar: 'technical',
   },
+  {
+    id: 'psych-001',
+    pillar: 'psychological',
+    input: 'Archetyp Classification: User behavior shows perfectionism patterns',
+    output: {
+      task_type: 'P1',
+      archetyp: 'perfektionist',
+      confidence: 0.87
+    },
+    metadata: {
+      neutrality_score: 5,
+      gdpr_compliant: true,
+      psychologist_approved: false
+    },
+    status: 'pending',
+    qualityScore: 0.87,
+  }
 ]);
 
 const config: AletheiaConfig = {
-  pillars: ['technical', 'research', 'business'],
+  pillars: ['technical', 'psychological', 'scientific'],
   showQualityScore: true,
   allowEdit: true,
   enableKeyboardShortcuts: true,
   validations: {
-    research: {
+    psychological: {
+      neutralityCheck: true,
+      minQualityScore: 0.8,
+    },
+    scientific: {
       requireCitation: true,
       minQualityScore: 0.9,
     },
